@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Iluha3443/test-go-it/static/css/main.7acaea2f.css",
+    "main.js": "/Iluha3443/test-go-it/static/js/main.eb95edde.js",
+    "index.html": "/Iluha3443/test-go-it/index.html",
+    "main.7acaea2f.css.map": "/Iluha3443/test-go-it/static/css/main.7acaea2f.css.map",
+    "main.eb95edde.js.map": "/Iluha3443/test-go-it/static/js/main.eb95edde.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.eb95edde.js"
+  ]
+}
