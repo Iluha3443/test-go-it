@@ -3,7 +3,7 @@ import { fetchCars } from 'components/Api';
 import { CatalogContainer, SettingsContainer, LoadMore, Container } from './Catalog.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites } from 'storage/Slice';
-import { CiHeart } from "react-icons/ci";
+import { LuHeart } from "react-icons/lu";
 
 export const Catalog = () => {
     const [cars, setCars] = useState([]);
@@ -12,7 +12,7 @@ export const Catalog = () => {
     const [selectedPrice, setSelectedPrice] = useState('');
     const listFavoriteCar = useSelector(state => state.favorite);
     const dispatch = useDispatch();
-    const [isClicked, setIsClicked] = useState(false);
+    // const [isClicked, setIsClicked] = useState(false);
 
     const models = [
         "Buick",
@@ -66,13 +66,8 @@ export const Catalog = () => {
         setVisibleCars((prevVisibleCars) => prevVisibleCars + 12);
     };
 
-    const handleFavoriteClick = (id) => {
-        console.log(id)
-    // if (listFavoriteCar.includes(id)) {
-    //   dispatch(removeFromFavorites(id));
-    // } else {
-    //   dispatch(addToFavorites(id));
-    // }
+    const handleFavoriteClick = (car) => {
+     dispatch(addToFavorites(car));
   };
 
 
@@ -107,8 +102,6 @@ export const Catalog = () => {
                     ))}
                 </select>
             
-             
-            
             <label htmlFor="">
                 <input type="text" placeholder='from' />
             </label>
@@ -121,23 +114,19 @@ export const Catalog = () => {
 
             <CatalogContainer>
                  {cars.slice(0, visibleCars).map((car) => (
-                    <div className="car-info" key={car.id}>
-                        {car.img ? (
-                             <img src={car.img} alt={car.make}
+                     <div className="car-info" key={car.id}>
+                         
+                         {car.img ? (
+                             <div className="car-img" style={{ position: 'relative', display: 'inline-block' }}>
+                                 <LuHeart style={{ position:'absolute', top: 8, right: 6}}  onClick={() => handleFavoriteClick(car)} />
+                                  <img src={car.img} alt={car.make} 
                                         />
+                             </div> 
                         ) : (
                             <div>Sorry we don't have this picture</div>
                          )}
                          
-                         <CiHeart
-              style={{
-                width: 18,
-                height: 18,
-                                 color: listFavoriteCar.includes(car.id) ? 'red' : 'black',
-                position: 'absolute', top: 270, left: 370
-              }}
-              onClick={() => handleFavoriteClick(car.id)}
-            />
+                      
                         <p>{car.make}</p>
                         <p>{car.year}</p>
                         <p>{car.rentalPrice}</p>

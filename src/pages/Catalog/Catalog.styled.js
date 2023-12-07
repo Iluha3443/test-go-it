@@ -12,7 +12,7 @@ export const CatalogContainer = styled.div`
         width:274px;
         height:268px;
         margin-bottom:14px;
-        position:relative;
+        
     }
 
     .car-info{
